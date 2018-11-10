@@ -215,7 +215,7 @@ return [
         */
         [
             'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'app/uninstalled'),
-            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://localhost/larashop/webhook/app-uninstalled')
+            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://api.nakyk.com.br/webhook/app-uninstalled')
         ],
     ],
 
