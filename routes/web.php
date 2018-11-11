@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['auth.shop'])->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->middleware(['auth.shop'])->name('home');
 Route::get('/hello', function () {
     return 'Word';
 });
