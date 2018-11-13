@@ -5,7 +5,7 @@ oi
     <p>Olá : {{ ShopifyApp::shop()->shopify_domain }}</p>
     
     <div>
-        <a href="<?php url('/collections'); ?>">Coleções</a>
+        <a href="<?php echo url('/collections'); ?>">Coleções</a>
     </div>
 
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
