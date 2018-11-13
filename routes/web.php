@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth.shop'])->name('home');
+
+Route::get('/collections', function () {
+    return view('welcome');
+})->middleware(['auth.shop'])->name('collections');
+
