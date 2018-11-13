@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Collection;
 use Illuminate\Http\Request;
-//use \OhMyBrew\BasicShopifyAPI;
+use OhMyBrew\ShopifyApp\Models\Shop;
 
 class CollectionController extends Controller
 {
