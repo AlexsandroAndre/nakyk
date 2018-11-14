@@ -33,7 +33,7 @@
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ $produto->title }}</td>
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ $produto->title }}</td>
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->title }}</td>
-                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->title }}</td>
+                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->vendor }}</td>
                         </tr>
                     @endforeach
                     </tbody>
