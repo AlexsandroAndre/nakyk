@@ -20,9 +20,10 @@ class CollectionController extends Controller
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         $request = $api->rest('GET', '/admin/collection.js');
-        // $shop = ShopifyApp::shop();
-        // $result = $shop->api()->rest('GET', '/admin/collection.js');
-        return view('collections.index', array('collections' => $request));
+        echo '<pre>';
+            var_dump($request);
+            echo '</pre>';
+        return view('collections.index', array('collections' => ''));
     }
 
     /**
