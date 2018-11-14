@@ -1,6 +1,7 @@
 @extends('shopify-app::layouts.default')
 
 @section('content')
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.0.0/polaris.min.css" />
 <div>
     <a href="<?php url('/'); ?>">Home</a>    
 </div>
