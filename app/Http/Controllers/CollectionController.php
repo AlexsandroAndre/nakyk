@@ -23,7 +23,7 @@ class CollectionController extends Controller
         //$request = $api->rest('GET', '/admin/collects.json');
         
         echo '<pre>';
-            var_dump(session('shopify'));
+            var_dump(session('nk_sp_tk'));
             echo '</pre>';
         return view('collections.index', array('collections' => ''));
     }

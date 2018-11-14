@@ -3,7 +3,7 @@
 @section('content')
 oi
     <p>Olá : {{ ShopifyApp::shop()->shopify_domain }}</p>
-    {{ ShopifyApp::shop()->shopify_token }}
+    <?php session('nk_sp_tk', ShopifyApp::shop()->shopify_token); ?> 
     <div>
         <a href="<?php echo url('/collections'); ?>">Coleções</a>
     </div>
