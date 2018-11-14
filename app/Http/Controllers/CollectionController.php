@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Collection;
 use Illuminate\Http\Request;
-use OhMyBrew\ShopifyApp\Models\Shop;
+use OhMyBrew\BasicShopifyAPI;
 
 class CollectionController extends Controller
 {
@@ -15,8 +15,12 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $shop = ShopifyApp::shop();
-        $result = $shop->api()->rest('GET', '/admin/collection.js');
+        $api = new BasicShopifyAPI();
+        echo '<pre>';
+            var_dump($api);
+            echo '</pre>';
+        // $shop = ShopifyApp::shop();
+        // $result = $shop->api()->rest('GET', '/admin/collection.js');
         return view('collections.index', array('collections' => $result));
     }
 
