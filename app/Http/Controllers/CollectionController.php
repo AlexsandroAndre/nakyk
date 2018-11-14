@@ -21,7 +21,7 @@ class CollectionController extends Controller
             echo '</pre>';
         // $shop = ShopifyApp::shop();
         // $result = $shop->api()->rest('GET', '/admin/collection.js');
-        return view('collections.index', array('collections' => $result));
+        return view('collections.index', array('collections' => ''));
     }
 
     /**

@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <a href="<?php url('/'); ?>">Home</a>
-    var_dump($collections);
+    
 </div>
 
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
