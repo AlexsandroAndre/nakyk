@@ -19,20 +19,15 @@
                     <thead>
                         <tr>
                             <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--fixed Polaris-DataTable__Cell--header" scope="col">Produto</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Preço</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">SKU</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Quantidade</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Variantes</th>
                             <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Vendedor</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($collections as $produto)
-                        {{var_dump($produto->variants)}}
                         <tr class="Polaris-DataTable__TableRow">
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->title }}</td>
-                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric"></td>
-                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ $produto->title }}</td>
-                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->title }}</td>
+                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ count($produto->variants) }}</td>
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->vendor }}</td>
                         </tr>
                     @endforeach
