@@ -22,7 +22,7 @@ class CollectionController extends Controller
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         $api->setAccessToken($shop->shopify_token);
-        $request = $api->rest('GET', '/admin/collects.json');
+        $request = $api->rest('GET', '/admin/products.json');
         
         echo '<pre>';
             var_dump($request->body);
