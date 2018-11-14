@@ -18,17 +18,21 @@
                 <table class="Polaris-DataTable__Table">
                     <thead>
                         <tr>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--fixed Polaris-DataTable__Cell--header" scope="col">Product</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Price</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">SKU Number</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Net quantity</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Net sales</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--fixed Polaris-DataTable__Cell--header" scope="col">Produto</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Preço</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">SKU</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Quantidade</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Vendedor</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($collections as $produto)
-                        {{ print_r($produto) }}
                         <tr class="Polaris-DataTable__TableRow">
+                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->title }}</td>
+                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ $produto->price }}</td>
+                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ $produto->inventory_quantity }}</td>
+                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->inventory_quantity }}</td>
+                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->vendor }}</td>
                         </tr>
                     @endforeach
                     </tbody>
