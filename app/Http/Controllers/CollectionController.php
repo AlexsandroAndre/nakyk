@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Collection;
 use Illuminate\Http\Request;
 use OhMyBrew\BasicShopifyAPI;
-use \OhMyBrew\ShopifyApp;
+use OhMyBrew\ShopifyApp;
 
 class CollectionController extends Controller
 {
@@ -21,10 +21,10 @@ class CollectionController extends Controller
         // $api->setApiKey(env('SHOPIFY_API_KEY'));
         // $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         // $request = $api->rest('GET', '/admin/collects.json');
-        $app = \OhMyBrew\ShopifyApp::Shop();
+        $shop = ShopifyApp::shop();
         
         echo '<pre>';
-            var_dump($app);
+            var_dump($shop);
             echo '</pre>';
         return view('collections.index', array('collections' => ''));
     }
