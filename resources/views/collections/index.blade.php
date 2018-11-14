@@ -5,7 +5,7 @@
     <a href="<?php url('/'); ?>">Home</a>    
 </div>
 
-{{ $collections }}
+{{ var_dump($collections) }}
 
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 @endsection
