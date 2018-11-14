@@ -16,7 +16,7 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $shops = Shops::where('shopify_domain', '=', session('shopify_domain'))->first();
+        $shop = Shops::where('shopify_domain', '=', session('shopify_domain'))->first();
         // $api = new BasicShopifyAPI();
         // $api->setShop(session('shopify_domain'));
         // $api->setApiKey(env('SHOPIFY_API_KEY'));
@@ -25,7 +25,7 @@ class CollectionController extends Controller
         //$request = $api->rest('GET', '/admin/collects.json');
         
         echo '<pre>';
-            var_dump($shops);
+            var_dump($shop->shopify_token);
             echo '</pre>';
         return view('collections.index', array('collections' => ''));
     }
