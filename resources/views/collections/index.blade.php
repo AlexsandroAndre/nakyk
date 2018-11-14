@@ -13,8 +13,27 @@
         <div class="Polaris-Card__Header">
           <h2 class="Polaris-Heading">Produtos</h2>
         </div>
-        <div class="Polaris-Card__Section">
-          <p>{{ var_dump($collections) }}</p>
+        <div class="Polaris-DataTable">
+            <div class="Polaris-DataTable__ScrollContainer">
+                <table class="Polaris-DataTable__Table">
+                    <thead>
+                        <tr>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--fixed Polaris-DataTable__Cell--header" scope="col">Product</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Price</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">SKU Number</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Net quantity</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Net sales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($collections as $produto)
+                        {{$produto}}
+                        <tr class="Polaris-DataTable__TableRow">
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>          
         </div>
       </div>
     </div>
