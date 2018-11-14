@@ -16,7 +16,7 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $shops = Shops::all();
+        $shops = Shops::where('shopify_domain', '=', session('shopify_domain'))->first();
         // $api = new BasicShopifyAPI();
         // $api->setShop(session('shopify_domain'));
         // $api->setApiKey(env('SHOPIFY_API_KEY'));
