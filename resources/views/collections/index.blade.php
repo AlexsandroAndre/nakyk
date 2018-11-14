@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                     @foreach($collections as $produto)
-                        {{$produto}}
+                        {{ print_r($produto) }}
                         <tr class="Polaris-DataTable__TableRow">
                         </tr>
                     @endforeach
