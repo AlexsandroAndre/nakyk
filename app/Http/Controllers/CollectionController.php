@@ -24,10 +24,7 @@ class CollectionController extends Controller
         $api->setAccessToken($shop->shopify_token);
         $request = $api->rest('GET', '/admin/products.json');
         
-        echo '<pre>';
-            var_dump($request->body);
-            echo '</pre>';
-        return view('collections.index', array('collections' => ''));
+        return view('collections.index', array('collections' => $request->body->products));
     }
 
     /**

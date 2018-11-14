@@ -2,9 +2,10 @@
 
 @section('content')
 <div>
-    <a href="<?php url('/'); ?>">Home</a>
-    
+    <a href="<?php url('/'); ?>">Home</a>    
 </div>
+
+{{ $collections }}
 
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 @endsection
