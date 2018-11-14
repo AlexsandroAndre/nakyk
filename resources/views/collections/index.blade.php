@@ -2,9 +2,6 @@
 
 @section('content')
 <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.0.0/polaris.min.css" />
-<div>
-    <a href="<?php url('/'); ?>">Home</a>    
-</div>
 
 <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
   <div class="Polaris-Layout">
@@ -12,6 +9,9 @@
       <div class="Polaris-Card">
         <div class="Polaris-Card__Header">
           <h2 class="Polaris-Heading">Produtos</h2>
+            <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
+                <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">Home</a>
+            </div>
         </div>
         <div class="Polaris-DataTable">
             <div class="Polaris-DataTable__ScrollContainer">
