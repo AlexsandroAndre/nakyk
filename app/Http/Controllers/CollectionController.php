@@ -19,7 +19,7 @@ class CollectionController extends Controller
         $api->setShop(session('shopify_domain'));
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
-        $request = $api->rest('GET', '/admin/collection.js');
+        $request = $api->rest('GET', '/admin/collects.json');
         echo '<pre>';
             var_dump($request);
             echo '</pre>';
