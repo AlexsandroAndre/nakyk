@@ -16,15 +16,15 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        // $api = new BasicShopifyAPI();
-        // $api->setShop(session('shopify_domain'));
-        // $api->setApiKey(env('SHOPIFY_API_KEY'));
-        // $api->setApiSecret(env('SHOPIFY_API_SECRET'));
-        // $request = $api->rest('GET', '/admin/collects.json');
-        $shop = ShopifyApp::shop();
+        $api = new BasicShopifyAPI();
+        $api->setShop(session('shopify_domain'));
+        $api->setApiKey(env('SHOPIFY_API_KEY'));
+        $api->setApiSecret(env('SHOPIFY_API_SECRET'));
+        $code = $_GET['code'];
+        //$request = $api->rest('GET', '/admin/collects.json');
         
         echo '<pre>';
-            var_dump($shop);
+            var_dump($code);
             echo '</pre>';
         return view('collections.index', array('collections' => ''));
     }
