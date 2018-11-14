@@ -27,9 +27,10 @@
                     </thead>
                     <tbody>
                     @foreach($collections as $produto)
+                        {{var_dump($produto)}}
                         <tr class="Polaris-DataTable__TableRow">
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->title }}</td>
-                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ $produto->price }}</td>
+                            <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ $produto->inventory_quantity }}</td>
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell--numeric">{{ $produto->inventory_quantity }}</td>
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->inventory_quantity }}</td>
                             <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell">{{ $produto->vendor }}</td>
