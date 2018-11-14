@@ -18,9 +18,9 @@
                 <table class="Polaris-DataTable__Table">
                     <thead>
                         <tr>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--fixed Polaris-DataTable__Cell--header" scope="col">Produto</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--header" scope="col">Variantes</th>
-                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--header" scope="col">Vendedor</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--fixed Polaris-DataTable__Cell" scope="col">Produto</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell--numeric" scope="col">Variantes</th>
+                            <th class="Polaris-DataTable__Cell Polaris-DataTable__Cell--header Polaris-DataTable__Cell" scope="col">Vendedor</th>
                         </tr>
                     </thead>
                     <tbody>
