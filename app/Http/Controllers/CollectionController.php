@@ -16,12 +16,13 @@ class CollectionController extends Controller
     public function index()
     {
         $api = new BasicShopifyAPI();
-        echo '<pre>';
-            var_dump(session('shopify_domain'));
-            echo '</pre>';
+        $api->setShop(session('shopify_domain'));
+        $api->setApiKey(env('SHOPIFY_API_KEY'));
+        $api->setApiSecret(env('SHOPIFY_API_SECRET'));
+        $request = $api->rest('GET', '/admin/collection.js');
         // $shop = ShopifyApp::shop();
         // $result = $shop->api()->rest('GET', '/admin/collection.js');
-        return view('collections.index', array('collections' => ''));
+        return view('collections.index', array('collections' => $request));
     }
 
     /**
