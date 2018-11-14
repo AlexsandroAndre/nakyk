@@ -17,7 +17,7 @@ class CollectionController extends Controller
     {
         $api = new BasicShopifyAPI();
         echo '<pre>';
-            var_dump($api);
+            var_dump(session());
             echo '</pre>';
         // $shop = ShopifyApp::shop();
         // $result = $shop->api()->rest('GET', '/admin/collection.js');
