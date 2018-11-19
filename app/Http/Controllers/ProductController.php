@@ -88,7 +88,7 @@ class ProductController extends Controller
     {
         $this->sync_produto();
         $this->sync_pedido();
-        $produtos = DB::connection('sqlsrv')->select("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'");        
+        $produtos = DB::connection('sqlsrv')->select("SELECT * FROM produtos");        
         echo '<pre>';
         var_dump($produtos);
         echo '</pre>';
