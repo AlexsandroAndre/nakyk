@@ -11,12 +11,13 @@
                         <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
                             Olá: <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">{{ ShopifyApp::shop()->shopify_domain }}</a>
                             <br>
-                            <a href="<?php echo url('/collections'); ?>">Coleções</a>
+                            <!--<a href="<?php echo url('/collections'); ?>">Coleções</a>-->
+                            <button type="button" class="Polaris-Button" id="btn_sync_shop_to_db"><span class="Polaris-Button__Content"><span>Sync</span></span></button>
                         </div>
                     </div>
                     <div class="Polaris-DataTable">
                         <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
-                            <button type="button" class="Polaris-Button" id="btn_sync_shop_to_db"><span class="Polaris-Button__Content"><span>Sync</span></span></button>
+                            
                         </div>                                 
                     </div>
                 </div>
