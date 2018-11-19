@@ -89,7 +89,7 @@ class ProductController extends Controller
     public function sync()
     {
         $this->sync_produto();
-        $this->sync_pedido();
+        //$this->sync_pedido();
         $produtos = DB::connection('sqlsrv')->select("SELECT * FROM produtos");        
         echo '<pre>';
         var_dump($produtos);
