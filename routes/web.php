@@ -20,3 +20,8 @@ Route::get('/collections', function () {
     return $collection->index();
 })->middleware(['auth.shop'])->name('collections');
 
+Route::get('/products', function () {
+    $product = new App\Http\Controllers\ProductController();
+    return $product->sync();
+})->middleware(['auth.shop'])->name('products');
+

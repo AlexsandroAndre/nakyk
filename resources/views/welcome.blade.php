@@ -45,14 +45,12 @@
         $(function(){
             $("#btn_sync_shop_to_db").click(function(){
                 alert('click');
-                // let postData = {
-                //     url: url_usuarios_by_empresa,
-                //     method : 'POST',
-                //     data : {
-                //         'id_empresa': id_empresa
-                //     }
-                // };
-                // let response = send(postData);
+                let postData = {
+                    url: '/products',
+                    method : 'GET',
+                    data : { }
+                };
+                let response = send(postData);
             });
         });
 
