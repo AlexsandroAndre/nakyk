@@ -114,7 +114,7 @@ class ProductController extends Controller
     private function sync_pedido()
     {
         //listar os pedidos
-        $this->get_pedidos();
+        $this->get_pedidos(); 
         //verificar se existe em shopify
 
         //update no shopfy
