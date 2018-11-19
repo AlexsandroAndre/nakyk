@@ -90,10 +90,10 @@ class ProductController extends Controller
     {
         $this->sync_produto();
         $this->sync_pedido();
-        // $produtos = DB::connection('sqlsrv')->select("SELECT * FROM produtos");        
-        // echo '<pre>';
-        // var_dump($produtos);
-        // echo '</pre>';
+        $produtos = DB::connection('sqlsrv')->select("SELECT * FROM produtos");        
+        echo '<pre>';
+        var_dump($produtos);
+        echo '</pre>';
     }
 
     /**
@@ -130,8 +130,8 @@ class ProductController extends Controller
         $api->setAccessToken($shop->shopify_token);
         $request = $api->rest('GET', '/admin/orders.json');
         //return $request->body->products
-        echo '<pre>';
-            var_dump($request);
-            echo '</pre>';
+        // echo '<pre>';
+        //     var_dump($request);
+        //     echo '</pre>';
     }
 }
