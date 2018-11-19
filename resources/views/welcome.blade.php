@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="Polaris-DataTable">
-                             
+                    <button type="button" class="Polaris-Button" id="btn_sync_shop_to_db"><span class="Polaris-Button__Content"><span>Sync</span></span></button>         
                 </div>
             </div>
             </div>
