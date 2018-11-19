@@ -1,10 +1,28 @@
 @extends('shopify-app::layouts.default')
 
 @section('content')
-    <p>Olá : {{ ShopifyApp::shop()->shopify_domain }}</p>
-    <div>
-        <a href="<?php echo url('/collections'); ?>">Coleções</a>
+    <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.0.0/polaris.min.css" />
+    
+    <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
+        <div class="Polaris-Layout">
+            <div class="Polaris-Layout__Section">
+            <div class="Polaris-Card">
+                <div class="Polaris-Card__Header">
+                <h2 class="Polaris-Heading">Produtos</h2>
+                    <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
+                        Olá: <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">{{ ShopifyApp::shop()->shopify_domain }}</a>
+                        <br>
+                        <a href="<?php echo url('/collections'); ?>">Coleções</a>
+                    </div>
+                </div>
+                <div class="Polaris-DataTable">
+                             
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 @endsection
