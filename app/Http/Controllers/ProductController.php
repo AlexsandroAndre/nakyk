@@ -90,12 +90,10 @@ class ProductController extends Controller
     {
         $this->sync_produto();
         //$this->sync_pedido();
-        $produtos = DB::connection('sqlsrv')->table("produtos");        
-        array_map(function($produto){
-            echo '<pre>';
-                var_dump($produto);
-                echo '</pre>';
-        }, $produtos);
+        $produtos = DB::connection('sqlsrv')->table("produtos")->get();        
+        echo '<pre>';
+            var_dump($produtos);
+            echo '</pre>';
     }
 
     /**
