@@ -1,6 +1,7 @@
 @extends('shopify-app::layouts.default')
 
 @section('content')
+{{phpinfo()}}
 <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.0.0/polaris.min.css" />
 
 <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
