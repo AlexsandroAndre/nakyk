@@ -84,11 +84,11 @@ return [
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_HOST_NAKYK', 'localhost'),
+            'port' => env('DB_PORT_NAKYK', '1433'),
+            'database' => env('DB_DATABASE_NAKYK', 'forge'),
+            'username' => env('DB_USERNAME_NAKYK', 'forge'),
+            'password' => env('DB_PASSWORD_NAKYK', ''),
             'charset' => 'utf8',
             'prefix' => '',
         ],

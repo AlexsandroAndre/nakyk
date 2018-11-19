@@ -86,14 +86,35 @@ class ProductController extends Controller
 
     public function sync()
     {
-        // $pd = new Product;
-        // $pd->setConnection('mysql2');
-        // echo '<pre>';
-        // var_dump($pd);
-        // echo '</pre>';
-        $produtos = DB::connection('mysql2')->select("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'");
+        $this->sync_produto();
+        $this->sync_pedido();
+        $produtos = DB::connection('sqlsrv')->select("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'");        
         echo '<pre>';
-            var_dump($produtos);
-            echo '</pre>';
+        var_dump($produtos);
+        echo '</pre>';
+    }
+
+    /**
+     * verifica se o produto foi lancado no shopify, caso nao é lancado
+     */
+    private function sync_produto()
+    {
+        //listar os produtos
+
+        //verificar se existe em shopify
+
+        //update no shopfy
+    }
+
+    /**
+     * verifica se o pedido foi lancado no ERP do cliente, caso nao foi e lancado no ERP
+     */
+    private function sync_pedido()
+    {
+        //listar os pedidos
+
+        //verificar se existe em shopify
+
+        //update no shopfy
     }
 }
