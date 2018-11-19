@@ -112,9 +112,24 @@ class ProductController extends Controller
     private function sync_pedido()
     {
         //listar os pedidos
-
+        $this->get_pedidos();
         //verificar se existe em shopify
 
         //update no shopfy
+    }
+
+    private function get_pedidos()
+    {
+        $shop = Shops::where('shopify_domain', '=', session('shopify_domain'))->first();
+        $api = new BasicShopifyAPI();
+        $api->setShop($shop->shopify_domain);
+        $api->setApiKey(env('SHOPIFY_API_KEY'));
+        $api->setApiSecret(env('SHOPIFY_API_SECRET'));
+        $api->setAccessToken($shop->shopify_token);
+        $request = $api->rest('GET', '/admin/orders.json');
+        //return $request->body->products
+        echo '<pre>';
+            var_dump($request);
+            echo '</pre>';
     }
 }
