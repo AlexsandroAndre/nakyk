@@ -85,10 +85,14 @@ class ProductController extends Controller
 
     public function sync()
     {
-        $pd = new Product;
-        $pd->setConnection('mysql2');
+        // $pd = new Product;
+        // $pd->setConnection('mysql2');
+        // echo '<pre>';
+        // var_dump($pd);
+        // echo '</pre>';
+        $produtos = DB::connection('mysql2')->select('SELECT * FROM produto');
         echo '<pre>';
-        var_dump($pd);
-        echo '</pre>';
+            var_dump($produtos);
+            echo '</pre>';
     }
 }
