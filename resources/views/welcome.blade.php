@@ -6,19 +6,20 @@
     <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
         <div class="Polaris-Layout">
             <div class="Polaris-Layout__Section">
-            <div class="Polaris-Card">
-                <div class="Polaris-Card__Header">
-                <h2 class="Polaris-Heading">Produtos</h2>
-                    <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
-                        Olá: <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">{{ ShopifyApp::shop()->shopify_domain }}</a>
-                        <br>
-                        <a href="<?php echo url('/collections'); ?>">Coleções</a>
+                <div class="Polaris-Card">
+                    <div class="Polaris-Card__Header">
+                        <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
+                            Olá: <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">{{ ShopifyApp::shop()->shopify_domain }}</a>
+                            <br>
+                            <a href="<?php echo url('/collections'); ?>">Coleções</a>
+                        </div>
+                    </div>
+                    <div class="Polaris-DataTable">
+                        <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
+                            <button type="button" class="Polaris-Button" id="btn_sync_shop_to_db"><span class="Polaris-Button__Content"><span>Sync</span></span></button>
+                        </div>                                 
                     </div>
                 </div>
-                <div class="Polaris-DataTable">
-                    <button type="button" class="Polaris-Button" id="btn_sync_shop_to_db"><span class="Polaris-Button__Content"><span>Sync</span></span></button>         
-                </div>
-            </div>
             </div>
         </div>
     </div>
