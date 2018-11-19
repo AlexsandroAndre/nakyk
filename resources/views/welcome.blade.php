@@ -2,6 +2,7 @@
 
 @section('content')
     <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.0.0/polaris.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
         <div class="Polaris-Layout">
@@ -13,6 +14,7 @@
                             <br>
                             <!--<a href="<?php echo url('/collections'); ?>">Coleções</a>-->
                             <button type="button" class="Polaris-Button" id="btn_sync_shop_to_db"><span class="Polaris-Button__Content"><span>Sync</span></span></button>
+                            <br>
                         </div>
                     </div>
                     <div class="Polaris-DataTable">
@@ -24,8 +26,6 @@
             </div>
         </div>
     </div>
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 @endsection
 
@@ -40,5 +40,46 @@
                     title: 'Welcome'
                 })
             });
+        
+
+        $(function(){
+            $("#btn_sync_shop_to_db").click(function(){
+                alert('click');
+                // let postData = {
+                //     url: url_usuarios_by_empresa,
+                //     method : 'POST',
+                //     data : {
+                //         'id_empresa': id_empresa
+                //     }
+                // };
+                // let response = send(postData);
+            });
+        });
+
+
+
+        function send(object)
+        {
+            var result = '';
+            if(object.method == null){
+                object.null = 'GET';
+            }
+            $.ajax({
+                method: object.method,
+                url: object.url,
+                data: object.data,
+                async : false
+            })
+            .done(function(success){
+                result = success;
+            })
+            .fail(function(error){
+                result = error;
+            })
+            .always(function() {
+                //
+            });
+            return result;
+        }   
     </script>
 @endsection
