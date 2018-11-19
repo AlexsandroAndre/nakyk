@@ -91,7 +91,7 @@ class ProductController extends Controller
         // echo '<pre>';
         // var_dump($pd);
         // echo '</pre>';
-        $produtos = DB::connection('mysql2')->select('SELECT * FROM produto');
+        $produtos = DB::connection('mysql2')->select("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'");
         echo '<pre>';
             var_dump($produtos);
             echo '</pre>';
