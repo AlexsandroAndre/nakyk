@@ -44,13 +44,13 @@
 
         $(function(){
             $("#btn_sync_shop_to_db").click(function(){
-                alert('click');
                 let postData = {
                     url: '/products',
                     method : 'GET',
                     data : { }
                 };
                 let response = send(postData);
+                console.log('sync: ', response);
             });
         });
 
