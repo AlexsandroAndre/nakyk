@@ -84,7 +84,7 @@ return [
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
-            'host' => env('DB_HOST_NAKYK', 'localhost'),
+            'host' => env('DB_HOST_NAKYK', 'connect.megasult.com.br'),
             'port' => env('DB_PORT_NAKYK', '1433'),
             'database' => env('DB_DATABASE_NAKYK', 'forge'),
             'username' => env('DB_USERNAME_NAKYK', 'forge'),
