@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Shops;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use OhMyBrew\BasicShopifyAPI;
 
 class ProductController extends Controller
 {
