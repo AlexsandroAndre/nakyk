@@ -99,6 +99,7 @@ class ProductController extends Controller
     {
         //listar os produtos
         $produtos = $this->get_produtos_erp();
+        echo 'total: ' . count($produtos) . '<br>';
         //verificar se existe em shopify
         array_map(function($produto){ 
             $shopify_produtos = $this->get_produto_shopify($produto->DESC_PRODUTO);
