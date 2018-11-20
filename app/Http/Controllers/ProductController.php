@@ -99,6 +99,10 @@ class ProductController extends Controller
     {
         //listar os produtos
         $this->get_produtos_erp();
+        $p_barras = DB::connection('sqlsrv')->select("SELECT * FROM produtos_barras"); 
+        echo '<pre>';
+            var_dump($p_barras);
+            echo '</pre>';
         //verificar se existe em shopify
 
         //update no shopfy
@@ -110,11 +114,7 @@ class ProductController extends Controller
     private function sync_pedido()
     {
         //listar os pedidos
-        $this->get_pedidos(); 
-        $p_barras = DB::connection('sqlsrv')->select("SELECT * FROM produtos_barras"); 
-        echo '<pre>';
-            var_dump($p_barras);
-            echo '</pre>';
+        $this->get_pedidos();
         //verificar se existe em shopify
 
         //update no shopfy
