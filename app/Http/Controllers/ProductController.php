@@ -155,6 +155,7 @@ class ProductController extends Controller
 
     private function produto_barra($p)
     {
-        return $p->produtos_barra = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
+        $p->produtos_barra = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
+        return $p;
     }
 }
