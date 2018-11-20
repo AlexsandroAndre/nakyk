@@ -111,9 +111,13 @@ class ProductController extends Controller
             {
                 if($i == 2)
                 {
-                    sleep(1);
+                    sleep(2);
                 }                
                 $shopify_produtos = $this->get_produto_shopify($produto->DESC_PRODUTO);
+                if(empty($shopify_produtos))
+                {
+                    echo 'insere produto. ' . $produto->DESC_PRODUTO;
+                }
                 echo '<pre>';
                 var_dump($shopify_produtos);
                 echo '</pre>';
