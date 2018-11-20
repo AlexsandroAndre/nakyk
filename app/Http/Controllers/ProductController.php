@@ -139,9 +139,9 @@ class ProductController extends Controller
         // $query = "SELECT * FROM produtos LEFT JOIN produtos_barra ON produtos.produto = produtos_barra.produto WHERE produtos.envia_varejo_internet = 1"; 
         // return DB::connection('sqlsrv')->select($query);
         $query = DB::connection('sqlsrv')->select("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
-        $collection = new \Illuminate\Support\Collection($query);
+        //$collection = new \Illuminate\Support\Collection($query);
         $produto = array();
-        foreach($collection as $p)
+        foreach($query as $p)
         {
             echo '<pre>loop..';
                 var_dump($p->PRODUTO); 
