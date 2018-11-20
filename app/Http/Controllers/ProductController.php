@@ -136,8 +136,15 @@ class ProductController extends Controller
 
     private function get_produtos_erp()
     {
-        //return $produtos = DB::connection('sqlsrv')->select("SELECT * FROM produtos");
-        $query = "SELECT * FROM produtos LEFT JOIN produtos_barra ON produtos.produto = produtos_barra.produto"; 
-        return DB::connection('sqlsrv')->select($query);      
+        // $query = "SELECT * FROM produtos LEFT JOIN produtos_barra ON produtos.produto = produtos_barra.produto WHERE produtos.envia_varejo_internet = 1"; 
+        // return DB::connection('sqlsrv')->select($query);
+        $query = DB::connection('sqlsrv')->select("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
+        $produto = array();
+        foreach($query as $p)
+        {
+            $p->produtos_barra = DB::connection('sqlsrv')->select("SELECT * FROM produtos_barra WHERE produto =" . $p->produto);  
+            array_push($produto, $p);
+        }
+        return $produto;         
     }
 }
