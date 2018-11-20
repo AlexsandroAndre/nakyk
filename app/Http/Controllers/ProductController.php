@@ -112,6 +112,7 @@ class ProductController extends Controller
                 if($i == 2)
                 {
                     sleep(2);
+                    return false;
                 }                
                 $shopify_produtos = $this->get_produto_shopify($produto->DESC_PRODUTO);
                 if(empty($shopify_produtos))
@@ -189,6 +190,7 @@ class ProductController extends Controller
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         $api->setAccessToken($shop->shopify_token);
+        echo '/admin/products.json?title='.$produto;
         $request = $api->rest('GET', '/admin/products.json?title='.$produto);
         return $request->body->products;
     }
