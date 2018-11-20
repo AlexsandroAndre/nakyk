@@ -90,6 +90,7 @@ class ProductController extends Controller
     {
         $this->sync_produto();
         //$this->sync_pedido();
+        return response()->json(['status' => 'success', 'message' => 'Sincronização realizado com sucesso!']);
     }
 
     /**
@@ -122,7 +123,6 @@ class ProductController extends Controller
             }
             $i++;
         }
-        return response()->json(['status' => 'success', 'message' => 'Sincronização realizado com sucesso!']);
     }
 
     /**
