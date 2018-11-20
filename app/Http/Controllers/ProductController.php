@@ -104,10 +104,13 @@ class ProductController extends Controller
         {
             return false;
         }
+        $i=1;
         foreach($produtos as $produto)
         {
             //$shopify_produtos = $this->get_produto_shopify($produto->DESC_PRODUTO);
-            echo $produto->DESC_PRODUTO.'<br>';
+            if(isset($produto->DESC_PRODUTO) && !empty($produto->DESC_PRODUTO))
+                echo $i .':'. $produto->DESC_PRODUTO.'<br>';
+            $i++;
         }
         
         //update no shopfy
