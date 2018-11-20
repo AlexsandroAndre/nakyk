@@ -119,6 +119,8 @@ class ProductController extends Controller
                 if(empty($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
                 {
                    $this->lanca_produto_shopify($produto);
+                   return false;
+                   die('parou');
                 }
             }
             $i++;
@@ -202,9 +204,7 @@ class ProductController extends Controller
         );
         
         echo json_encode($arr_produto);
-        //$this->send($arr_produto);
-        return false;
-        die('parou');
+        //$this->send($arr_produto);       
     }
 
     private function send($params)
