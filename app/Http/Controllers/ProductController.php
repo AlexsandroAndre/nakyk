@@ -90,7 +90,7 @@ class ProductController extends Controller
     {
         $this->sync_produto();
         //$this->sync_pedido();
-        $query = DB::select("SELECT * FROM produtos");        
+        $query = DB::connection('sqlsrv')->select("SELECT * FROM produtos");        
         $produtos = new \Illuminate\Support\Collection($query);
         echo '<pre>';
             var_dump($produtos);
