@@ -195,10 +195,27 @@ class ProductController extends Controller
         $arr_produto = array(
             'title'        => $produto->DESC_PRODUTO,
             'vendor'       => $produto->GRIFFE,
-            'product_type' => $produto->SUBGRUPO_PRODUTO
+            'product_type' => $produto->SUBGRUPO_PRODUTO,
+            'tags'         => strtolower($produto->SUBGRUPO_PRODUTO)
         );
+        
+
+        $this->send($arr_produto);
+        return false;
+        die('parou');
+    }
+
+    private function send($params)
+    {
+        $shop = Shops::where('shopify_domain', '=', session('shopify_domain'))->first();
+        $api = new BasicShopifyAPI();
+        $api->setShop($shop->shopify_domain);
+        $api->setApiKey(env('SHOPIFY_API_KEY'));
+        $api->setApiSecret(env('SHOPIFY_API_SECRET'));
+        $api->setAccessToken($shop->shopify_token);
+        $request = $api->rest('POST', '/admin/products.json', $params);
         echo '<pre>';
-        var_dump($arr_produto);
+        var_dump($request->body);
         echo '</pre>';
     }
 }
