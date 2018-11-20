@@ -149,11 +149,11 @@ class ProductController extends Controller
 
     private function produto_barra($p)
     {
-        $produtos_barra = array();
-        $query = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
-        array_push($produtos_barra, array_map(array($this, 'produto_cores'), $query));
-        $p->produtos_barra = $produtos_barra;
-        unset($produtos_barra);
+        // $p->produtos_barra = array();
+        // $query = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
+        // array_push($p->produtos_barra, array_map(array($this, 'produto_cores'), $query));
+        // return $p;
+        $p->produtos_barra = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
         return $p;
     }
 
