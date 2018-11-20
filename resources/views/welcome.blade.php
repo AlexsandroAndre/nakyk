@@ -50,7 +50,10 @@
                     data : { }
                 };
                 let response = send(postData);
-                console.log('sync: ', response);
+                if(response.status == 'success')
+                {
+                    alert(response.message);
+                }
             });
         });
 
