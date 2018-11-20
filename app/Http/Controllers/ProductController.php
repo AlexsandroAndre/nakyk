@@ -192,6 +192,13 @@ class ProductController extends Controller
 
     private function lanca_produto_shopify($produto)
     {
-        
+        $arr_produto = array(
+            'title'        => $produto->DESC_PRODUTO,
+            'vendor'       => $produto->GRIFFE,
+            'product_type' => $produto->SUBGRUPO_PRODUTO
+        );
+        echo '<pre>';
+        var_dump($arr_produto);
+        echo '</pre>';
     }
 }
