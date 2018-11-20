@@ -114,7 +114,7 @@ class ProductController extends Controller
                     sleep(2);
                     return false;
                 }                
-                $shopify_produtos = $this->get_produto_shopify($produto->DESC_PRODUTO);
+                $shopify_produtos = $this->get_produto_shopify(strtolower($produto->DESC_PRODUTO));
                 if(empty($shopify_produtos))
                 {
                     echo 'insere produto. ' . $produto->DESC_PRODUTO;
