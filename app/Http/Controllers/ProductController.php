@@ -99,7 +99,7 @@ class ProductController extends Controller
     {
         //listar os produtos
         $this->get_produtos_erp();
-        $p_barras = DB::connection('sqlsrv')->select("SELECT * FROM produtos_barras"); 
+        $p_barras = DB::connection('sqlsrv')->select("SELECT * FROM produto_barra"); 
         echo '<pre>';
             var_dump($p_barras);
             echo '</pre>';
