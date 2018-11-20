@@ -151,7 +151,7 @@ class ProductController extends Controller
     {
         $produtos_barra = array();
         $query = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
-        array_push($produtos_barra, array_map(array($this, 'produto_cores'), $query));
+        array_push(get_object_vars($p->produtos_barra), array_map(array($this, 'produto_cores'), $query));
         $p->produtos_barra = $produtos_barra;
         return $p;
     }
