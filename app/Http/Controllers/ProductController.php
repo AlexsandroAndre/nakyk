@@ -136,8 +136,8 @@ class ProductController extends Controller
 
     private function get_produtos_erp()
     {
-        $produto = $this->query_builder("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
-        array_push($produtos, array_map(array($this, 'produto_barra'), $produto));
+        $produtos = $this->query_builder("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
+        array_push($produtos, array_map(array($this, 'produto_barra'), $produtos));
         return $produtos;         
     }
 
