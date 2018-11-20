@@ -93,7 +93,7 @@ class ProductController extends Controller
         $query = DB::connection('sqlsrv')->select("SELECT * FROM produtos");        
         $produtos = new \Illuminate\Support\Collection($query);
         echo '<pre>';
-            var_dump($produtos);
+            var_dump($query);
             echo '</pre>';
     }
 
