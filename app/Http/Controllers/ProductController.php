@@ -136,9 +136,8 @@ class ProductController extends Controller
 
     private function get_produtos_erp()
     {
-        $query = $this->query_builder("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
-        $produtos = array();
-        array_push($produtos, array_map(array($this, 'produto_barra'), $query));
+        $produto = $this->query_builder("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
+        array_push($produtos, array_map(array($this, 'produto_barra'), $produto));
         return $produtos;         
     }
 
@@ -149,11 +148,6 @@ class ProductController extends Controller
 
     private function produto_barra($p)
     {
-        // $p->produtos_barra = array();
-        // $query = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
-        // array_push($p->produtos_barra, array_map(array($this, 'produto_cores'), $query));
-        // return $p;
-        
         $p->produtos_barra = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
         array_push($p->produtos_barra, array_map(array($this, 'produto_cores'), $p->produtos_barra));
         return $p;
