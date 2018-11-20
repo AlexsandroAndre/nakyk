@@ -90,11 +90,6 @@ class ProductController extends Controller
     {
         $this->sync_produto();
         //$this->sync_pedido();
-        $produtos = DB::connection('sqlsrv')->select("SELECT * FROM produtos");        
-        //$produtos = new \Illuminate\Support\Collection($query);
-        echo '<pre>';
-            var_dump($produtos);
-            echo '</pre>';
     }
 
     /**
@@ -103,7 +98,7 @@ class ProductController extends Controller
     private function sync_produto()
     {
         //listar os produtos
-
+        $this->get_produtos_erp();
         //verificar se existe em shopify
 
         //update no shopfy
@@ -116,6 +111,10 @@ class ProductController extends Controller
     {
         //listar os pedidos
         $this->get_pedidos(); 
+        $p_barras = DB::connection('sqlsrv')->select("SELECT * FROM produtos_barras"); 
+        echo '<pre>';
+            var_dump($p_barras);
+            echo '</pre>';
         //verificar se existe em shopify
 
         //update no shopfy
@@ -134,5 +133,10 @@ class ProductController extends Controller
         // echo '<pre>';
         //     var_dump($request);
         //     echo '</pre>';
+    }
+
+    private function get_produtos_erp()
+    {
+        return $produtos = DB::connection('sqlsrv')->select("SELECT * FROM produtos");        
     }
 }
