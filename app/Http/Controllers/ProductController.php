@@ -111,22 +111,18 @@ class ProductController extends Controller
             {
                 if($i == 2)
                 {
+                    //regra shopify 2 request por segundo
                     sleep(2);
-                    return false;
                 }                
                 $shopify_produtos = $this->get_produto_shopify(strtolower(trim($produto->DESC_PRODUTO)));
-                if(empty($shopify_produtos))
+                if(empty($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
                 {
-                    echo 'insere produto. ' . $produto->DESC_PRODUTO;
+                   $this->lanca_produto_shopify($produto);
                 }
-                echo '<pre>';
-                var_dump($shopify_produtos);
-                echo '</pre>';
             }
             $i++;
         }
-        
-        //update no shopfy
+        return response()->json(['status' => 'success', 'message' => 'Sincronização realizado com sucesso!']);
     }
 
     /**
@@ -193,5 +189,10 @@ class ProductController extends Controller
         echo '/admin/products.json?title='.$produto;
         $request = $api->rest('GET', '/admin/products.json?title='.$produto);
         return $request->body->products;
+    }
+
+    private function lanca_produto_shopify($produto)
+    {
+        
     }
 }
