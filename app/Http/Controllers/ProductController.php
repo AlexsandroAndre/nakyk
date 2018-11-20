@@ -107,9 +107,13 @@ class ProductController extends Controller
         $i=1;
         foreach($produtos as $produto)
         {
-            //$shopify_produtos = $this->get_produto_shopify($produto->DESC_PRODUTO);
             if(isset($produto->DESC_PRODUTO) && !empty($produto->DESC_PRODUTO))
-                echo $i .':'. $produto->DESC_PRODUTO.'<br>';
+            {
+                $shopify_produtos = $this->get_produto_shopify($produto->DESC_PRODUTO);
+                echo '<pre>';
+                    var_dump($shopify_produtos);
+                    echo '</pre>';
+            }
             $i++;
         }
         
