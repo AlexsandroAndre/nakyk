@@ -138,13 +138,20 @@ class ProductController extends Controller
     {
         // $query = "SELECT * FROM produtos LEFT JOIN produtos_barra ON produtos.produto = produtos_barra.produto WHERE produtos.envia_varejo_internet = 1"; 
         // return DB::connection('sqlsrv')->select($query);
-        $query = DB::connection('sqlsrv')->select("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
+        $query = $this->query_builder("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
+        //DB::connection('sqlsrv')->select("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
         $produto = array();
         foreach($query as $p)
         {
-            $p->produtos_barra = DB::connection('sqlsrv')->select("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);  
+            $p->produtos_barra = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
+            //DB::connection('sqlsrv')->select("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);  
             array_push($produto, $p);
         }
         return $produto;         
+    }
+
+    private function query_builder($sql)
+    {
+        return DB::connection('sqlsrv')->select($sql);
     }
 }
