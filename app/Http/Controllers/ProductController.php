@@ -158,7 +158,7 @@ class ProductController extends Controller
 
     private function produto_cores($pc)
     {
-        $pc->produto_cores = $this->query_builder("SELECT * FROM produto_cores WHERE cor_produto =" . $pc->COR_PRODUTO);
+        $pc->produto_cores = $this->query_builder("SELECT * FROM produto_cores WHERE cor_produto ='" . $pc->COR_PRODUTO. "'");
         return $pc;
     }
 }
