@@ -109,7 +109,7 @@ class ProductController extends Controller
         {
             if(isset($produto->DESC_PRODUTO) && !empty($produto->DESC_PRODUTO))
             {
-                if($i == 2)
+                if($i % 2 == 0)
                 {
                     //regra shopify 2 request por segundo
                     sleep(2);
