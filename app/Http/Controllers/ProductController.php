@@ -186,7 +186,6 @@ class ProductController extends Controller
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         $api->setAccessToken($shop->shopify_token);
-        echo '/admin/products.json?title='.$produto;
         $request = $api->rest('GET', '/admin/products.json?title='.$produto);
         return $request->body->products;
     }
