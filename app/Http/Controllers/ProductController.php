@@ -99,11 +99,14 @@ class ProductController extends Controller
     {
         //listar os produtos
         $produtos = $this->get_produtos_erp();
-        echo '<pre>';
-            var_dump($produtos);
-            echo '</pre>';
         //verificar se existe em shopify
-
+        array_map(function($produto){ 
+            $shopify_produtos = $this->get_produto_shopify($produto->DESC_PRODUTO);
+            echo '<pre>';
+                var_dump($shopify_produtos);
+                echo '</pre>';
+        }, $produtos);
+        
         //update no shopfy
     }
 
@@ -157,5 +160,18 @@ class ProductController extends Controller
     {
         $pc->produto_cores = $this->query_builder("SELECT * FROM produto_cores WHERE cor_produto ='" . $pc->COR_PRODUTO. "'");
         return $pc;
+    }
+
+    private function get_produto_shopify($produto)
+    {
+        ///admin/products.json?title=<searchString>,limit=250,page=1,fields="id,title,etc
+        $shop = Shops::where('shopify_domain', '=', session('shopify_domain'))->first();
+        $api = new BasicShopifyAPI();
+        $api->setShop($shop->shopify_domain);
+        $api->setApiKey(env('SHOPIFY_API_KEY'));
+        $api->setApiSecret(env('SHOPIFY_API_SECRET'));
+        $api->setAccessToken($shop->shopify_token);
+        $request = $api->rest('GET', '/admin/products.json?title='.$produto);
+        return $request->body->products;
     }
 }
