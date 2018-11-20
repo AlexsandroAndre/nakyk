@@ -144,7 +144,7 @@ class ProductController extends Controller
         foreach($collection as $p)
         {
             echo '<pre>loop..';
-                var_dump($p); 
+                var_dump($p->PRODUTO); 
                 echo '</pre>';
             $p->produtos_barra = DB::connection('sqlsrv')->select("SELECT * FROM produtos_barra WHERE produto =" . $p->produto);  
             array_push($produto, $p);
