@@ -182,10 +182,11 @@ class ProductController extends Controller
         $arr_produto_barras = array();
         foreach($result as $p)
         {
+            $valor = (!empty($p->PRECO_LIQUIDO1) && !is_null($p->PRECO_LIQUIDO1)) ? $this->money_to_br($p->PRECO_LIQUIDO1) : '0.00'; 
             array_push($arr_produto_barras, array(
                 'option1' => trim($p->DESC_COR_PRODUTO), //cor
                 'option2' => trim($p->GRADE), //tamanho (P,M,G)
-                'price'   => $this->money_to_br($p->PRECO_LIQUIDO1)
+                'price'   => $valor
             ));
         }
 
