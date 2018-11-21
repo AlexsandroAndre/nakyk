@@ -113,7 +113,7 @@ class ProductController extends Controller
                 //regra shopify 2 request por segundo
                 sleep(2);
             } 
-            
+
             $shopify_produtos = $this->get_produto_shopify(strtolower(trim($produto->DESC_PRODUTO)));
             if(empty($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
             {
@@ -155,7 +155,7 @@ class ProductController extends Controller
     private function get_produtos_erp()
     {
         $produtos = $this->query_builder("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
-        array_push($produtos, array_map(array($this, 'produto_barra'), $produtos));
+        //array_push($produtos, array_map(array($this, 'produto_barra'), $produtos));
         return $produtos;         
     }
 
@@ -167,7 +167,7 @@ class ProductController extends Controller
     private function produto_barra($p)
     {
         $p->produtos_barra = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
-        array_push($p->produtos_barra, array_map(array($this, 'produto_cores'), $p->produtos_barra));
+        //array_push($p->produtos_barra, array_map(array($this, 'produto_cores'), $p->produtos_barra));
         return $p;
     }
 
@@ -191,13 +191,28 @@ class ProductController extends Controller
     }
 
     private function lanca_produto_shopify($produto)
-    {
+    {   
+        $result = $this->findById($produto->PRODUTO);
+        $arr_produto_barras = array();
+        foreach($result as $p)
+        {
+            array_push($arr_produto_barras, array(
+                'option1' => $p->DESC_COR_PRODUTO, //cor
+                'option2' => $p->GRADE, //tamanho (P,M,G)
+                'price'   => $this->money_to_br($p->PRECO_LIQUIDO1)
+            ));
+        }
+        
+
+
+        //objeto shopify
         $arr_produto = array(
             'product' => array(
-                'title'        => $produto->DESC_PRODUTO,
+                'title'        => ucfirst(strtolower($produto->DESC_PRODUTO)),
                 'vendor'       => $produto->GRIFFE,
                 'product_type' => $produto->SUBGRUPO_PRODUTO,
-                'tags'         => strtolower($produto->SUBGRUPO_PRODUTO)
+                'tags'         => strtolower($produto->SUBGRUPO_PRODUTO),
+                'options'     => $arr_produto_barras
             )
         );
         
@@ -213,8 +228,21 @@ class ProductController extends Controller
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         $api->setAccessToken($shop->shopify_token);
         $request = $api->rest('POST', '/admin/products.json', $params);
-        echo '<pre>';
-        var_dump($request->body);
-        echo '</pre>';
+        return $request->body->product;
+    }
+
+    private function findById($id)
+    {
+        $sql = "SELECT * FROM produtos LEFT JOIN produtos_barra ON produtos_barra.PRODUTO = produtos.PRODUTO";
+        $sql.= " LEFT JOIN produto_cores on produto_cores.COR_PRODUTO = produtos_barra.COR_PRODUTO AND produtos.PRODUTO = produto_cores.PRODUTO";
+        $sql.= " LEFT JOIN PRODUTOS_PRECOS on PRODUTOS_PRECOS.PRODUTO = produtos.PRODUTO";
+        $sql.= " WHERE produtos.envia_varejo_internet = 1 AND produtos.PRODUTO ='". $id ."'";
+
+        return $this->query_builder($sql);
+    }
+
+    private function money_to_br($valor)
+    {
+        return number_format($valor, 2, ',', '.');
     }
 }
