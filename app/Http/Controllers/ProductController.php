@@ -115,7 +115,7 @@ class ProductController extends Controller
             } 
 
             $shopify_produtos = $this->get_produto_shopify(strtolower(trim($produto->DESC_PRODUTO)));
-            if(empty($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
+            if(empty($shopify_produtos) || is_null($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
             {
                 $this->lanca_produto_shopify($produto);
                 return false;
@@ -185,7 +185,7 @@ class ProductController extends Controller
             array_push($arr_produto_barras, array(
                 'option1' => trim($p->DESC_COR_PRODUTO), //cor
                 'option2' => trim($p->GRADE), //tamanho (P,M,G)
-                'price'   => $p->PRECO_LIQUIDO1//$this->money_to_br($p->PRECO_LIQUIDO1)
+                'price'   => $this->money_to_br($p->PRECO_LIQUIDO1)
             ));
         }
 
@@ -199,8 +199,8 @@ class ProductController extends Controller
                 'options'     => $arr_produto_barras
             )
         );
-        echo json_encode($arr_produto);
-        //$this->send($arr_produto);       
+        //echo json_encode($arr_produto);
+        $this->send($arr_produto);       
     }
 
     private function send($params)
