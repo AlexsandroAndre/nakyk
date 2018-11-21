@@ -215,8 +215,10 @@ class ProductController extends Controller
                 'options'     => $arr_produto_barras
             )
         );
-        
-        $this->send($arr_produto);       
+        echo '<pre>';
+            var_dump(json_encode($arr_produto));
+            echo '</pre>';
+        //$this->send($arr_produto);       
     }
 
     private function send($params)
