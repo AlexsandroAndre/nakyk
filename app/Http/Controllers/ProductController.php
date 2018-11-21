@@ -200,7 +200,7 @@ class ProductController extends Controller
             )
         );
         //echo json_encode($arr_produto);
-        $this->send($arr_produto);       
+        echo $this->send($arr_produto);       
     }
 
     private function send($params)
