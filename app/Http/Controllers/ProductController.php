@@ -208,17 +208,14 @@ class ProductController extends Controller
         //objeto shopify
         $arr_produto = array(
             'product' => array(
-                'title'        => ucfirst(strtolower($produto->DESC_PRODUTO)),
-                'vendor'       => $produto->GRIFFE,
-                'product_type' => $produto->SUBGRUPO_PRODUTO,
+                'title'        => trim(ucfirst(strtolower($produto->DESC_PRODUTO))),
+                'vendor'       => trim($produto->GRIFFE),
+                'product_type' => trim($produto->SUBGRUPO_PRODUTO),
                 'tags'         => strtolower($produto->SUBGRUPO_PRODUTO),
                 'options'     => $arr_produto_barras
             )
         );
-        echo '<pre>';
-            var_dump(json_encode($arr_produto));
-            echo '</pre>';
-        //$this->send($arr_produto);       
+        $this->send($arr_produto);       
     }
 
     private function send($params)
