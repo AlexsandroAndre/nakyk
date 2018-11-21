@@ -180,7 +180,6 @@ class ProductController extends Controller
     {   
         $result = $this->findById($produto->PRODUTO);
         $arr_produto_barras = array();
-        $arr_produto_options = array();
         foreach($result as $p)
         {
             $valor = (!empty($p->PRECO_LIQUIDO1) && !is_null($p->PRECO_LIQUIDO1)) ? $this->money_to_br($p->PRECO_LIQUIDO1) : '0.00'; 
@@ -188,10 +187,6 @@ class ProductController extends Controller
                 'option1' => trim($p->DESC_COR_PRODUTO), //cor
                 'option2' => trim($p->GRADE), //tamanho (P,M,G)
                 'price'   => $valor
-            ));
-
-            array_push($arr_produto_options, array(
-                'name' => trim($p->DESC_COR_PRODUTO)
             ));
         }
 
@@ -205,7 +200,7 @@ class ProductController extends Controller
                 'variants'     => $arr_produto_barras
             )
         );
-        //echo json_encode($arr_produto);
+        echo json_encode($arr_produto);
         echo $this->send($arr_produto);       
     }
 
