@@ -118,8 +118,9 @@ class ProductController extends Controller
             if(empty($shopify_produtos) || is_null($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
             {
                 $this->lanca_produto_shopify($produto);
-                return false;
-                die('parou');
+            }else
+            {
+                $this->verifica_mudancas_no_erp($produto, $shopify_produtos);
             }            
             $i++;
         }
@@ -200,10 +201,9 @@ class ProductController extends Controller
                 'variants'     => $arr_produto_barras
             )
         );
-        echo json_encode($arr_produto);
         echo '<br><pre>';
-            var_dump($this->send($arr_produto));
-            echo '</pre>';       
+        var_dump($this->send($arr_produto));
+        echo '</pre>';       
     }
 
     private function send($params)
@@ -231,5 +231,28 @@ class ProductController extends Controller
     private function money_to_br($valor)
     {
         return number_format($valor, 2, ',', '.');
+    }
+
+    private function verifica_mudancas_no_erp($produto, $shopify_produtos)
+    {
+        $erp_produto = new StdClass;
+
+        $erp_produto->title        = $produto->trim(ucfirst(strtolower($produto->DESC_PRODUTO)));
+        $erp_produto->vendor       = trim($produto->GRIFFE);
+        $erp_produto->product_type = trim($produto->SUBGRUPO_PRODUTO);
+        $erp_produto->tags         = trim(strtolower($produto->SUBGRUPO_PRODUTO));
+
+        $s_produtos = new StdClass;
+
+        $s_produtos->title        = $shopify_produtos->trim(ucfirst(strtolower($shopify_produtos->title)));
+        $s_produtos->vendor       = trim($shopify_produtos->vendor);
+        $s_produtos->product_type = trim($shopify_produtos->product_type);
+        $s_produtos->tags         = trim(strtolower($shopify_produtos->tags));
+
+        if($s_produtos != $erp_produto)
+        {
+            //update no shopify
+            echo 'update';
+        }
     }
 }
