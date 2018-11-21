@@ -155,26 +155,12 @@ class ProductController extends Controller
     private function get_produtos_erp()
     {
         $produtos = $this->query_builder("SELECT * FROM produtos WHERE envia_varejo_internet = 1");
-        //array_push($produtos, array_map(array($this, 'produto_barra'), $produtos));
         return $produtos;         
     }
 
     private function query_builder($sql)
     {
         return DB::connection('sqlsrv')->select($sql);
-    }
-
-    private function produto_barra($p)
-    {
-        $p->produtos_barra = $this->query_builder("SELECT * FROM produtos_barra WHERE produto =" . $p->PRODUTO);
-        //array_push($p->produtos_barra, array_map(array($this, 'produto_cores'), $p->produtos_barra));
-        return $p;
-    }
-
-    private function produto_cores($pc)
-    {
-        $pc->produto_cores = $this->query_builder("SELECT * FROM produto_cores WHERE cor_produto ='" . $pc->COR_PRODUTO. "'");
-        return $pc;
     }
 
     private function get_produto_shopify($produto)
@@ -202,8 +188,6 @@ class ProductController extends Controller
                 'price'   => $this->money_to_br($p->PRECO_LIQUIDO1)
             ));
         }
-        
-
 
         //objeto shopify
         $arr_produto = array(
@@ -215,7 +199,8 @@ class ProductController extends Controller
                 'options'     => $arr_produto_barras
             )
         );
-        $this->send($arr_produto);       
+        echo json_encode($arr_produto);
+        //$this->send($arr_produto);       
     }
 
     private function send($params)
