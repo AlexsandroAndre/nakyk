@@ -183,8 +183,8 @@ class ProductController extends Controller
         foreach($result as $p)
         {
             array_push($arr_produto_barras, array(
-                'option1' => $p->DESC_COR_PRODUTO, //cor
-                'option2' => $p->GRADE, //tamanho (P,M,G)
+                'option1' => trim($p->DESC_COR_PRODUTO), //cor
+                'option2' => trim($p->GRADE), //tamanho (P,M,G)
                 'price'   => $this->money_to_br($p->PRECO_LIQUIDO1)
             ));
         }
@@ -195,7 +195,7 @@ class ProductController extends Controller
                 'title'        => trim(ucfirst(strtolower($produto->DESC_PRODUTO))),
                 'vendor'       => trim($produto->GRIFFE),
                 'product_type' => trim($produto->SUBGRUPO_PRODUTO),
-                'tags'         => strtolower($produto->SUBGRUPO_PRODUTO),
+                'tags'         => trim(strtolower($produto->SUBGRUPO_PRODUTO)),
                 'options'     => $arr_produto_barras
             )
         );
