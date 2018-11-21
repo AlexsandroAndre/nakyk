@@ -108,18 +108,19 @@ class ProductController extends Controller
         $i=1;
         foreach($produtos as $produto)
         {
+            if($i % 2 == 0)
+            {
+                //regra shopify 2 request por segundo
+                sleep(2);
+            } 
+            
             $shopify_produtos = $this->get_produto_shopify(strtolower(trim($produto->DESC_PRODUTO)));
             if(empty($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
             {
                 $this->lanca_produto_shopify($produto);
                 return false;
                 die('parou');
-            }
-            if($i % 2 == 0)
-            {
-                //regra shopify 2 request por segundo
-                sleep(2);
-            } 
+            }            
             $i++;
         }
     }
