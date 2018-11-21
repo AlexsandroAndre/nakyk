@@ -108,21 +108,18 @@ class ProductController extends Controller
         $i=1;
         foreach($produtos as $produto)
         {
-            if(isset($produto->DESC_PRODUTO) && !empty($produto->DESC_PRODUTO))
+            $shopify_produtos = $this->get_produto_shopify(strtolower(trim($produto->DESC_PRODUTO)));
+            if(empty($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
             {
-                if($i % 2 == 0)
-                {
-                    //regra shopify 2 request por segundo
-                    sleep(2);
-                }                
-                $shopify_produtos = $this->get_produto_shopify(strtolower(trim($produto->DESC_PRODUTO)));
-                if(empty($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
-                {
-                   $this->lanca_produto_shopify($produto);
-                   return false;
-                   die('parou');
-                }
+                $this->lanca_produto_shopify($produto);
+                return false;
+                die('parou');
             }
+            if($i % 2 == 0)
+            {
+                //regra shopify 2 request por segundo
+                sleep(2);
+            } 
             $i++;
         }
     }
@@ -214,7 +211,7 @@ class ProductController extends Controller
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         $api->setAccessToken($shop->shopify_token);
-        $request = $api->rest('POST', '/admin/products.json', json_encode($params));
+        $request = $api->rest('POST', '/admin/products.json', $params);
         echo '<pre>';
         var_dump($request->body);
         echo '</pre>';
