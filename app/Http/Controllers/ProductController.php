@@ -88,8 +88,8 @@ class ProductController extends Controller
 
     public function sync()
     {
-        $this->sync_produto();
-        //$this->sync_pedido();
+        //$this->sync_produto();
+        $this->sync_pedido();
         return response()->json(['status' => 'success', 'message' => 'Sincronização realizado com sucesso!']);
     }
 
@@ -146,7 +146,11 @@ class ProductController extends Controller
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         $api->setAccessToken($shop->shopify_token);
-        $request = $api->rest('GET', '/admin/orders.json');        
+        $request = $api->rest('GET', '/admin/orders.json');
+        
+        echo '<pre>';
+        var_dump($request);
+        echo '</pre>';
     }
 
     private function get_produtos_erp()
