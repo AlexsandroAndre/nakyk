@@ -114,7 +114,7 @@ class ProductController extends Controller
                 sleep(2);
             } 
 
-            $shopify_produtos = $this->get_produto_shopify(strtolower(trim($produto->DESC_PRODUTO)));
+            $shopify_produtos = $this->get_produto_shopify(strtolower(trim($produto->DESC_PROD_NF)));
             if(empty($shopify_produtos) || is_null($shopify_produtos)) //se nao existir o produto cadastrado lancamos um novo
             {
                 $this->lanca_produto_shopify($produto);
@@ -146,11 +146,7 @@ class ProductController extends Controller
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
         $api->setAccessToken($shop->shopify_token);
-        $request = $api->rest('GET', '/admin/orders.json');
-        //return $request->body->products
-        // echo '<pre>';
-        //     var_dump($request);
-        //     echo '</pre>';
+        $request = $api->rest('GET', '/admin/orders.json');        
     }
 
     private function get_produtos_erp()
@@ -166,7 +162,6 @@ class ProductController extends Controller
 
     private function get_produto_shopify($produto)
     {
-        ///admin/products.json?title=<searchString>,limit=250,page=1,fields="id,title,etc
         $shop = Shops::where('shopify_domain', '=', session('shopify_domain'))->first();
         $api = new BasicShopifyAPI();
         $api->setShop($shop->shopify_domain);
@@ -194,7 +189,7 @@ class ProductController extends Controller
         //objeto shopify
         $arr_produto = array(
             'product' => array(
-                'title'        => trim(ucfirst(strtolower($produto->DESC_PRODUTO))),
+                'title'        => trim(ucfirst(strtolower($produto->DESC_PROD_NF))),
                 'vendor'       => trim($produto->GRIFFE),
                 'product_type' => trim($produto->SUBGRUPO_PRODUTO),
                 'tags'         => trim(strtolower($produto->SUBGRUPO_PRODUTO)),
@@ -237,7 +232,7 @@ class ProductController extends Controller
     {
         $erp_produto = new StdClass;
 
-        $erp_produto->title        = $produto->trim(ucfirst(strtolower($produto->DESC_PRODUTO)));
+        $erp_produto->title        = $produto->trim(ucfirst(strtolower($produto->DESC_PROD_NF)));
         $erp_produto->vendor       = trim($produto->GRIFFE);
         $erp_produto->product_type = trim($produto->SUBGRUPO_PRODUTO);
         $erp_produto->tags         = trim(strtolower($produto->SUBGRUPO_PRODUTO));
