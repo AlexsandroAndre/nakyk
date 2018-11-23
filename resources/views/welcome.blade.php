@@ -13,7 +13,7 @@
                             Olá: <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">{{ ShopifyApp::shop()->shopify_domain }}</a>
                         </div>
                     </div>
-                    <div class="Polaris-Card__Content" style="min-height:300px;">
+                    <div class="Polaris-Card__Section" style="min-height:300px;">
                         <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
                             <button type="button" class="Polaris-Button Polaris-Button--primary" id="btn_sync_shop_to_db" >
                                 <span class="Polaris-Button__Content"><span>Sync</span></span>
