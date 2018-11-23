@@ -10,7 +10,9 @@
                 <div class="Polaris-Card">
                     <div class="Polaris-Card__Header">
                         <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-darker:#006d74; --top-bar-background-lighter:#1d9ba4;">
-                            Olá: <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">{{ ShopifyApp::shop()->shopify_domain }}</a>
+                            <h4 class="Polaris-Heading">
+                                Olá: <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">{{ ShopifyApp::shop()->shopify_domain }}</a>
+                            </h4>
                         </div>
                     </div>
                     <div class="Polaris-Card__Section" style="min-height:300px;">
