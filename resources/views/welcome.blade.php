@@ -13,7 +13,7 @@
                             Olá: <a class="Polaris-Link" href="<?php url('/'); ?>" data-polaris-unstyled="true">{{ ShopifyApp::shop()->shopify_domain }}</a>
                             <br>
                             <!--<a href="<?php echo url('/collections'); ?>">Coleções</a>-->
-                            <button type="button" class="Polaris-Button" id="btn_sync_shop_to_db" primary><span class="Polaris-Button__Content"><span>Sync</span></span></button>
+                            <button type="button" class="Polaris-Button Polaris-Button--primary" id="btn_sync_shop_to_db" ><span class="Polaris-Button__Content"><span>Sync</span></span></button>
                             <br>
                         </div>
                     </div>
