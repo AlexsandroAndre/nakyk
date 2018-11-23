@@ -145,6 +145,7 @@ class ProductController extends Controller
         $api->setShop($shop->shopify_domain);
         $api->setApiKey(env('SHOPIFY_API_KEY'));
         $api->setApiSecret(env('SHOPIFY_API_SECRET'));
+        $api->getAuthUrl(array('read_all_orders', 'write_orders'), '');
         $api->setAccessToken($shop->shopify_token);
         $request = $api->rest('GET', '/admin/orders.json');
         
